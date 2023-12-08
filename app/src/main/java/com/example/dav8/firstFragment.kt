@@ -77,12 +77,12 @@ class firstFragment : Fragment() {
         addbutton.setOnClickListener {
             if(nameInput.text.toString()!=""&&emailInput.text.toString()!=""&&numInput.text.toString()!=""&&locInput.text.toString()!=""){
                 (activity as MainActivity).addables = utils.addNewItem((activity as MainActivity).addables, nameInput.text.toString(),emailInput.text.toString(),numInput.text.toString(),locInput.text.toString())
+                (activity as MainActivity).db.addItem(nameInput.text.toString(),emailInput.text.toString(),numInput.text.toString(),locInput.text.toString())
                 nameInput.setText("")
                 emailInput.setText("")
                 numInput.setText("")
                 locInput.setText("")
             }
-
         }
     }
 }

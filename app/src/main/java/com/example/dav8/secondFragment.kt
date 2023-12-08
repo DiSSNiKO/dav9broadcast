@@ -67,6 +67,5 @@ class secondFragment : Fragment() {
         val recyclerView: RecyclerView =view.findViewById(R.id.recycleviu)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = itemAdapter
-
     }
 }
