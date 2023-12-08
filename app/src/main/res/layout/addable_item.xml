@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_marginBottom="10dp"
+    >
+
+    <TextView
+        android:id="@+id/addableName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Default text"
+        android:textSize="21sp"
+        android:background="@android:color/holo_green_light"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp"
+        >
+    </TextView>
+    <TextView
+        android:id="@+id/addableMail"
+        android:background="@android:color/holo_green_dark"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Default text"
+        android:layout_gravity="center_horizontal"
+        android:textSize="21sp"
+        android:layout_marginBottom="10dp">
+    </TextView>
+    <TextView
+        android:id="@+id/addableNumber"
+        android:background="@android:color/holo_green_light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Default text"
+        android:layout_gravity="center_horizontal"
+        android:textSize="21sp"
+        android:layout_marginBottom="10dp">
+    </TextView>
+    <TextView
+        android:id="@+id/addableLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Default text"
+        android:layout_gravity="center_horizontal"
+        android:background="@android:color/holo_green_dark"
+
+        android:textSize="21sp"
+        android:layout_marginBottom="10dp">
+    </TextView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="21sp"
+        android:text=" - - - "
+        android:textAlignment="center"
+        android:background="@android:color/holo_blue_light">
+
+    </TextView>
+
+</LinearLayout>
