@@ -1,4 +1,4 @@
 package com.example.dav8
 
-class AddableItemModel {
+data class AddableItemModel (var addableName: String, var addableEmail : String, var addableNumber : String, var addableLocation : String) {
 }

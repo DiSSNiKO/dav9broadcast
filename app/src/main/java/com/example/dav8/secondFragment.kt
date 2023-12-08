@@ -1,10 +1,13 @@
 package com.example.dav8
 
 import android.os.Bundle
+import android.provider.SyncStateContract
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,6 +30,7 @@ class secondFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
     }
 
     override fun onCreateView(
@@ -55,5 +59,21 @@ class secondFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val item = AddableItemModel("John", "goober@gmail.com","591222222", "Plato")
+        // Assign employeelist to ItemAdapter
+        val itemAdapter=RecyclerViewAdapter(arrayListOf(item))
+
+        // Set the LayoutManager that
+        // this RecyclerView will use.
+        val recyclerView: RecyclerView =view.findViewById(R.id.recycleviu)
+        recyclerView.layoutManager = LinearLayoutManager(context)
+
+        // adapter instance is set to the
+        // recyclerview to inflate the items.
+        recyclerView.adapter = itemAdapter
     }
 }
