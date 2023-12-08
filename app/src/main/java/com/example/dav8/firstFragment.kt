@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -20,7 +22,13 @@ class firstFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private lateinit var addbutton : Button
+    private lateinit var nameInput : EditText
+    private lateinit var emailInput : EditText
+    private lateinit var numInput : EditText
+    private lateinit var locInput : EditText
 
+    lateinit var utils : Utils
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -55,5 +63,26 @@ class firstFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        addbutton  = requireView().findViewById(R.id.addbutton)
+        utils = Utils()
+        nameInput = requireView().findViewById(R.id.itemName)
+        emailInput = requireView().findViewById(R.id.itemMail)
+        numInput = requireView().findViewById(R.id.itemNum)
+        locInput = requireView().findViewById(R.id.itemLoc)
+
+        addbutton.setOnClickListener {
+            if(nameInput.text.toString()!=""&&emailInput.text.toString()!=""&&numInput.text.toString()!=""&&locInput.text.toString()!=""){
+                (activity as MainActivity).addables = utils.addNewItem((activity as MainActivity).addables, nameInput.text.toString(),emailInput.text.toString(),numInput.text.toString(),locInput.text.toString())
+                nameInput.setText("")
+                emailInput.setText("")
+                numInput.setText("")
+                locInput.setText("")
+            }
+
+        }
     }
 }

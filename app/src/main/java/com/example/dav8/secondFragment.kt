@@ -63,17 +63,10 @@ class secondFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val item = AddableItemModel("John", "goober@gmail.com","591222222", "Plato")
-        // Assign employeelist to ItemAdapter
-        val itemAdapter=RecyclerViewAdapter(arrayListOf(item))
-
-        // Set the LayoutManager that
-        // this RecyclerView will use.
+        val itemAdapter=RecyclerViewAdapter((activity as MainActivity).addables)
         val recyclerView: RecyclerView =view.findViewById(R.id.recycleviu)
         recyclerView.layoutManager = LinearLayoutManager(context)
-
-        // adapter instance is set to the
-        // recyclerview to inflate the items.
         recyclerView.adapter = itemAdapter
+
     }
 }
