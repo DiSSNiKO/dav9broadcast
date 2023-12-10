@@ -13,19 +13,25 @@ class SQLiteHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
     override fun onCreate(db: SQLiteDatabase) {
         // below is a sqlite query, where column names
         // along with their data types is given
-        val query = ("CREATE TABLE " + TABLE_NAME + " ("
+        val queryOne = ("CREATE TABLE " + TABLE_NAME + " ("
                 + ID_COL + " INTEGER PRIMARY KEY, " +
                 NAME_COl + " TEXT," +
                 MAIL_COL + " TEXT," +
                 NUM_COL + " TEXT," +
                 LOC_COL + " TEXT" + ")")
+        val queryBroadcast = ("CREATE TABLE " + BROADCAST_TABLE + " ("
+                + ID_BR_COL + " INTEGER PRIMARY KEY, " +
+                LOG_COL + " TEXT"
+                + ")")
         // we are calling sqlite
         // method for executing our query
-        db.execSQL(query)
+        db.execSQL(queryOne)
+        db.execSQL(queryBroadcast)
     }
     override fun onUpgrade(db: SQLiteDatabase, p1: Int, p2: Int) {
         // this method is to check if table already exists
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME)
+        db.execSQL("DROP TABLE IF EXISTS " + BROADCAST_TABLE)
         onCreate(db)
     }
     // This method is for adding data in our database
@@ -57,7 +63,21 @@ class SQLiteHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         val db = this.readableDatabase
         return db.rawQuery("SELECT * FROM " + TABLE_NAME, null)
     }
+    fun getBroadcastData(): Cursor? {
+        val db = this.readableDatabase
+        return db.rawQuery("SELECT * FROM " + BROADCAST_TABLE, null)
+    }
+    fun addBroadcastLog(log : String){
+        val values = ContentValues()
 
+        values.put(LOG_COL, log)
+
+        val db = this.writableDatabase
+
+        db.insert(BROADCAST_TABLE, null, values)
+
+        db.close()
+    }
     companion object{
         // here we have defined variables for our database
 
@@ -69,6 +89,11 @@ class SQLiteHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
 
         // below is the variable for table name
         val TABLE_NAME = "addables"
+
+        //DAV 9 TABLE
+        val BROADCAST_TABLE = "broadcast_log"
+        val LOG_COL = "broadcast_details"
+        val ID_BR_COL = "id"
 
         // below is the variable for id column
         val ID_COL = "id"
